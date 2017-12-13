@@ -71,12 +71,12 @@ public class MapInterpreter extends Group {
 
 		}
 
-		for (int i = 0; i < robotCoords.size(); i += 2) {
-			Robot r = new Robot(SQUARE_SIZE);
-			r.setTranslateX(robotCoords.get(i) * SQUARE_SIZE);
-			r.setTranslateY(robotCoords.get(i + 1) * SQUARE_SIZE);
-			this.getChildren().add(r);
-		}
+//		for (int i = 0; i < robotCoords.size(); i += 2) {
+//			Robot r = new Robot(SQUARE_SIZE);
+//			r.setTranslateX(robotCoords.get(i) * SQUARE_SIZE);
+//			r.setTranslateY(robotCoords.get(i + 1) * SQUARE_SIZE);
+//			this.getChildren().add(r);
+//		}
 
 	}
 
