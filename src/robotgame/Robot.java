@@ -312,7 +312,7 @@ public class Robot extends Group {
 				b.setVisible(false);
 				b = null;
 				return false;
-			} else if (b instanceof Movable) {
+			} else if (b instanceof Movable && moveObject == null) {
 				moveObject = b;
 				System.out.println("MOVEABLE");
 				
