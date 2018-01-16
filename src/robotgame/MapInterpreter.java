@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 import blocks.Block;
 import blocks.ExampleBlock;
-import blocks.MovableBlock;
 import javafx.scene.Group;
 
 /**
@@ -36,14 +35,6 @@ public class MapInterpreter extends Group {
 				switch (block) {
 
 				case '#':
-					b = new ExampleBlock(SQUARE_SIZE);
-					break;
-
-				case 'B':
-					b = new MovableBlock(SQUARE_SIZE);
-					break;
-
-				case 'X':
 					b = new ExampleBlock(SQUARE_SIZE);
 					break;
 

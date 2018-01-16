@@ -25,30 +25,6 @@ public class Robot extends Group {
 
 	private Node moveObject = null;
 
-	private void choseColor() {
-		switch (NUMBER_OF_ROBOTS) {
-		case 1:
-			color = Color.RED;
-			break;
-		case 2:
-			color = Color.BLUE;
-			break;
-		case 3:
-			color = Color.LIMEGREEN;
-			break;
-		case 4:
-			color = Color.PINK;
-			break;
-		case 5:
-			color = Color.TURQUOISE;
-			break;
-		default:
-			color = Color.BLACK;
-			break;
-		}
-
-	}
-
 	/**
 	 * Creates a new robot with the given size.
 	 * 
@@ -127,48 +103,10 @@ public class Robot extends Group {
 	}
 
 	/**
-	 * Ask for the
-	 * 
 	 * @return the current stack of the Robot
 	 */
 	public ArrayList<Operation> getStack() {
 		return this.stack;
-	}
-
-	/**
-	 * Checks if the Robot is free and if so, continues with the instructions on
-	 * the stack.
-	 */
-	private void checkStack() {
-
-		if (this.state == State.BUSY) {
-			return;
-		}
-
-		if (stack.size() != 0) {
-
-			switch (stack.get(0)) {
-
-			case ROTATE_LEFT:
-				stack.remove(0);
-				rotateLeft();
-				break;
-			case ROTATE_RIGHT:
-				stack.remove(0);
-				rotateRight();
-				break;
-			case MOVE_FORWARD:
-				stack.remove(0);
-				moveForward();
-				break;
-			default:
-				stack.remove(0);
-				break;
-
-			}
-
-		}
-
 	}
 
 	/**
@@ -218,7 +156,31 @@ public class Robot extends Group {
 		setState(State.BUSY);
 		rotateLeftAnimation();
 	}
+	
+	private void choseColor() {
+		switch (NUMBER_OF_ROBOTS) {
+		case 1:
+			color = Color.RED;
+			break;
+		case 2:
+			color = Color.BLUE;
+			break;
+		case 3:
+			color = Color.LIMEGREEN;
+			break;
+		case 4:
+			color = Color.PINK;
+			break;
+		case 5:
+			color = Color.TURQUOISE;
+			break;
+		default:
+			color = Color.BLACK;
+			break;
+		}
 
+	}
+	
 	private void rotateLeftAnimation() {
 		at = new AnimationTimer() {
 			long rotate = 0;
@@ -284,6 +246,39 @@ public class Robot extends Group {
 		}
 	}
 
+
+	private void checkStack() {
+
+		if (this.state == State.BUSY) {
+			return;
+		}
+
+		if (stack.size() != 0) {
+
+			switch (stack.get(0)) {
+
+			case ROTATE_LEFT:
+				stack.remove(0);
+				rotateLeft();
+				break;
+			case ROTATE_RIGHT:
+				stack.remove(0);
+				rotateRight();
+				break;
+			case MOVE_FORWARD:
+				stack.remove(0);
+				moveForward();
+				break;
+			default:
+				stack.remove(0);
+				break;
+
+			}
+
+		}
+
+	}
+
 	private void setState(State s) {
 		this.state = s;
 		if (s == State.FREE) {
@@ -307,10 +302,7 @@ public class Robot extends Group {
 
 		if (collision) {
 			if (b instanceof Collectible) {
-				System.out.println("COLLECT");
 				collect(b);
-				b.setVisible(false);
-				b = null;
 				return false;
 			} else if (b instanceof Movable && moveObject == null) {
 				moveObject = b;
@@ -346,7 +338,9 @@ public class Robot extends Group {
 	}
 
 	private void collect(Block b) {
-		
+		b.setVisible(false);
+		b = null;
+
 		// TODO Auto-generated method stub
 		
 	}
