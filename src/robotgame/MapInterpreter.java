@@ -6,7 +6,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import blocks.Block;
-import blocks.ExampleBlock;
+import blocks.Gate;
+import blocks.Hole;
+import blocks.Wall;
+import blocks.Sliding;
+import blocks.Plate;
+import blocks.Pushable;
 //import blocks.MovableBlock;
 import javafx.scene.Group;
 
@@ -36,17 +41,33 @@ public class MapInterpreter extends Group {
 				switch (block) {
 
 				case '#':
-					b = new ExampleBlock(SQUARE_SIZE);
+					b = new Wall(SQUARE_SIZE);
 					break;
 
 				case 'B':
 //					b = new MovableBlock(SQUARE_SIZE);
 					break;
+					
+				case 'S':
+					b = new Sliding(SQUARE_SIZE);
+					break;	
 
 				case 'X':
-					b = new ExampleBlock(SQUARE_SIZE);
+					b = new Plate(SQUARE_SIZE);
 					break;
-
+					
+				case 'G':
+					b = new Gate(SQUARE_SIZE);
+					break;
+					
+				case 'H':
+					b = new Hole(SQUARE_SIZE);
+					break;
+					
+				case 'P':
+					b = new Pushable(SQUARE_SIZE);
+					break;				
+					
 				case 'R': // ROBOT
 					robotCoords.add(x);
 					robotCoords.add(y);
