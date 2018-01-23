@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import blocks.Block;
 import blocks.ExampleBlock;
-import blocks.MovableBlock;
+//import blocks.MovableBlock;
 import javafx.scene.Group;
 
 /**
@@ -40,7 +40,7 @@ public class MapInterpreter extends Group {
 					break;
 
 				case 'B':
-					b = new MovableBlock(SQUARE_SIZE);
+//					b = new MovableBlock(SQUARE_SIZE);
 					break;
 
 				case 'X':
