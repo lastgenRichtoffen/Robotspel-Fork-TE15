@@ -12,7 +12,6 @@ import blocks.Wall;
 import blocks.Sliding;
 import blocks.Plate;
 import blocks.Pushable;
-//import blocks.MovableBlock;
 import javafx.scene.Group;
 
 /**
@@ -43,11 +42,7 @@ public class MapInterpreter extends Group {
 				case '#':
 					b = new Wall(SQUARE_SIZE);
 					break;
-
-				case 'B':
-//					b = new MovableBlock(SQUARE_SIZE);
-					break;
-					
+				
 				case 'S':
 					b = new Sliding(SQUARE_SIZE);
 					break;	
