@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import blocks.Block;
+import blocks.Exit;
 import blocks.Gate;
 import blocks.Hole;
 import blocks.Wall;
@@ -53,6 +54,10 @@ public class MapInterpreter extends Group {
 					
 				case 'G':
 					b = new Gate(SQUARE_SIZE);
+					break;
+
+				case 'E':
+					b = new Exit(SQUARE_SIZE);
 					break;
 					
 				case 'H':
