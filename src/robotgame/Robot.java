@@ -305,6 +305,10 @@ public class Robot extends Group {
 				collect(b);
 				return false;
 			}
+			else if (b instanceof Deadly) {								//ends the game if robot interacts with deadly block
+				die;
+				return false;
+			}
 			else if (b instanceof Movable && moveObject == null) {
 				moveObject = b;
 				System.out.println("MOVEABLE");
@@ -342,11 +346,13 @@ public class Robot extends Group {
 	private void collect(Block b) {
 		b.setVisible(false);
 		b = null;
-
-		// TODO Auto-generated method stub
-		
 	}
 
+	private void die{
+		this.setVisible(false);
+		
+	}
+	
 	private boolean checkCollision(Node n) {
 
 		if (n == null || n.equals(this) || n instanceof NotCollidable) {
