@@ -6,9 +6,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import blocks.Block;
+import blocks.Coin;
 import blocks.Exit;
 import blocks.Gate;
 import blocks.Hole;
+import blocks.Key;
 import blocks.Wall;
 import blocks.Sliding;
 import blocks.Plate;
@@ -63,6 +65,15 @@ public class MapInterpreter extends Group {
 				case 'H':
 					b = new Hole(SQUARE_SIZE);
 					break;
+
+				case 'C':
+					b = new Coin(SQUARE_SIZE);
+					break;
+					
+				case 'K':
+					b = new Key(SQUARE_SIZE);
+					break;
+					
 					
 				case 'P':
 					b = new Pushable(SQUARE_SIZE);

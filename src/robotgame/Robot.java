@@ -304,7 +304,8 @@ public class Robot extends Group {
 			if (b instanceof Collectible) {
 				collect(b);
 				return false;
-			} else if (b instanceof Movable && moveObject == null) {
+			}
+			else if (b instanceof Movable && moveObject == null) {
 				moveObject = b;
 				System.out.println("MOVEABLE");
 				
@@ -332,7 +333,8 @@ public class Robot extends Group {
 
 			return true;
 
-		} else {
+		} 
+		else {
 			return false;
 		}
 	}
