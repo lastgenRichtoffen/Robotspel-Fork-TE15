@@ -46,11 +46,19 @@ public class MapInterpreter extends Group {
 					b = new Wall(SQUARE_SIZE);
 					break;
 				
-				case 'S':
+				case 'X':
+					b = new Sliding(SQUARE_SIZE);
+					break;
+					
+				case 'Y':
 					b = new Sliding(SQUARE_SIZE);
 					break;	
 
-				case 'X':
+				case 'V':
+					b = new Plate(SQUARE_SIZE);
+					break;
+					
+				case 'H':
 					b = new Plate(SQUARE_SIZE);
 					break;
 					
@@ -62,7 +70,7 @@ public class MapInterpreter extends Group {
 					b = new Exit(SQUARE_SIZE);
 					break;
 					
-				case 'H':
+				case 'P':
 					b = new Hole(SQUARE_SIZE);
 					break;
 
@@ -75,7 +83,7 @@ public class MapInterpreter extends Group {
 					break;
 					
 					
-				case 'P':
+				case 'B':
 					b = new Pushable(SQUARE_SIZE);
 					break;				
 					
