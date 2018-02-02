@@ -306,7 +306,7 @@ public class Robot extends Group {
 				return false;
 			}
 			else if (b instanceof Deadly) {								//ends the game if robot interacts with deadly block
-				die;
+//				die;
 				return false;
 			}
 			else if (b instanceof Movable && moveObject == null) {
@@ -348,10 +348,10 @@ public class Robot extends Group {
 		b = null;
 	}
 
-	private void die{
-		this.setVisible(false);
-		
-	}
+//	private void die{
+//		this.setVisible(false);
+//		
+//	}
 	
 	private boolean checkCollision(Node n) {
 
