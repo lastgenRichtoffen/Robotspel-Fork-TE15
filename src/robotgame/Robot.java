@@ -356,6 +356,7 @@ public class Robot extends Group {
 	private boolean checkCollision(Node n) {
 
 		if (n == null || n.equals(this) || n instanceof NotCollidable) {
+
 			return false; // Ignore n
 		}
 

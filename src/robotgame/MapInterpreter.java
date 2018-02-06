@@ -36,10 +36,13 @@ public class MapInterpreter extends Group {
 			y++;
 			String line = fileReader.nextLine();
 			char[] blocks = line.toCharArray();
-
-			for (int x = 0; x < blocks.length; x++) {
+			int step = 0;
+			int corr = 0;
+			for (int x = 0; x < blocks.length; x+=(step+1)) {
+				corr += step;
 				char block = blocks[x];
 				Block b = null;
+				step = 0;
 				switch (block) {
 
 				case '#':
@@ -47,11 +50,26 @@ public class MapInterpreter extends Group {
 					break;
 				
 				case 'X':
-					b = new Sliding(SQUARE_SIZE);
+					b = new SlidingX(SQUARE_SIZE);
+					step++;
+					char dir = blocks[x+step];
+					((SlidingX)b).setDir(dir);
+					step++;
+					char len = blocks[x+step];
+					((SlidingX)b).setLen(len);
+					step++;
+					char con = blocks[x+step];
+					
 					break;
 					
 				case 'Y':
-					b = new Sliding(SQUARE_SIZE);
+					b = new SlidingY(SQUARE_SIZE);
+					step++;
+					dir = blocks[x+step];
+					step++;
+					len = blocks[x+step];
+					step++;
+					con = blocks[x+step];
 					break;	
 
 				case 'V':
@@ -99,11 +117,10 @@ public class MapInterpreter extends Group {
 				default:
 					b = null;
 					break;
-
 				}
 
 				if (b != null) {
-					b.setTranslateX(x * SQUARE_SIZE - 1);
+					b.setTranslateX((x-corr) * SQUARE_SIZE - 1);
 					b.setTranslateY(y * SQUARE_SIZE - 1);
 					this.getChildren().add(b);
 				}
