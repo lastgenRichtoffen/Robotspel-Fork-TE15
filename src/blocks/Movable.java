@@ -6,4 +6,6 @@ package blocks;
  */
 public interface Movable {
 
+	public void move(int i);
+	
 }

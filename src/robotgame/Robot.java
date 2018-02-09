@@ -224,6 +224,7 @@ public class Robot extends Group {
 				setTranslateX(Math.cos(Math.toRadians(270 + getRotate())) + getTranslateX());
 				setTranslateY(Math.sin(Math.toRadians(270 + getRotate())) + getTranslateY());
 				if (moveObject != null) {
+					
 					moveObject.setTranslateX(Math.cos(Math.toRadians(270 + getRotate())) + moveObject.getTranslateX());
 					moveObject.setTranslateY(Math.sin(Math.toRadians(270 + getRotate())) + moveObject.getTranslateY());
 				}
@@ -395,7 +396,6 @@ public class Robot extends Group {
 				return false;
 			}
 			if (this.collides(minX, minY, nodeWidth, nodeHeight)) {
-				// ((Rectangle) n).setFill(this.color);
 				return true;
 			}
 			return false;
