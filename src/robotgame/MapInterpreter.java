@@ -9,10 +9,11 @@ import blocks.Block;
 import blocks.Coin;
 import blocks.Exit;
 import blocks.Gate;
-import blocks.Hole;
 import blocks.Key;
+import blocks.Pit;
 import blocks.Wall;
 import blocks.Sliding;
+import blocks.SlidingX;
 import blocks.Plate;
 import blocks.Pushable;
 import javafx.scene.Group;
@@ -89,7 +90,7 @@ public class MapInterpreter extends Group {
 					break;
 					
 				case 'P':
-					b = new Hole(SQUARE_SIZE);
+					b = new Pit(SQUARE_SIZE);
 					break;
 
 				case 'C':
@@ -120,7 +121,7 @@ public class MapInterpreter extends Group {
 				}
 
 				if (b != null) {
-					b.setTranslateX((x-corr) * SQUARE_SIZE - 1);
+					b.setTranslateX((x-corr) * SQUARE_SIZE - 1);				//corrects the jumps perfomed in sliding
 					b.setTranslateY(y * SQUARE_SIZE - 1);
 					this.getChildren().add(b);
 				}

@@ -12,7 +12,6 @@ public abstract class Block extends Group{
 	
 	private double SQUARE_SIZE;
 	private Rectangle bg;
-	private double index;											//note:add index so the game can calculate positions based on index
 	
 	public Block(double square_size){
 		this.SQUARE_SIZE = square_size;
