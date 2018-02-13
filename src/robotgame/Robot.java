@@ -14,7 +14,8 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
 public class Robot extends Group {
-
+	
+	private int keys=robotgame.MapInterpreter.keys;
 	private final double SQUARE_SIZE;
 	private AnimationTimer at;
 	private static int NUMBER_OF_ROBOTS = 0;
@@ -307,12 +308,15 @@ public class Robot extends Group {
 				return false;
 			}
 			else if (b instanceof Deadly) {								//ends the game if robot interacts with deadly block
-//				die;
+				die;
 				return false;
 			}
+			
 			else if (b instanceof Movable && moveObject == null) {
 				moveObject = b;
 				System.out.println("MOVEABLE");
+		
+				b.move();													//osäker på hur man får detta att fungera
 				
 				this.setTranslateX(
 						Math.cos(Math.toRadians(270 + this.getRotate())) * SQUARE_SIZE + this.getTranslateX());
@@ -346,13 +350,17 @@ public class Robot extends Group {
 
 	private void collect(Block b) {
 		b.setVisible(false);
+		keys-=1;
+		if(keys==0){
+			g.setVisibility(false);							//need to find a way to target the gate of the level, can I do it in gate?
+		}
 		b = null;
 	}
 
-//	private void die{
-//		this.setVisible(false);
-//		
-//	}
+	private void die{					//not certain if this will "kill" the robot
+		this.setVisible(false);
+		this.equals(null);
+	}
 	
 	private boolean checkCollision(Node n) {
 

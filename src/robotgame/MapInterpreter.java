@@ -24,6 +24,8 @@ import javafx.scene.Group;
  */
 public class MapInterpreter extends Group {
 	
+	public int keys;										//number of keys in a level
+	
 	public final double SQUARE_SIZE = 45;
 
 	public MapInterpreter() throws FileNotFoundException {
@@ -99,6 +101,7 @@ public class MapInterpreter extends Group {
 					
 				case 'K':
 					b = new Key(SQUARE_SIZE);
+					keys+=1;
 					break;
 					
 					
