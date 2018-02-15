@@ -361,7 +361,9 @@ public class Robot extends Group {
 	}
 
 	private void end() {
-		
+		System.out.println("CONGGLATURATION!");
+		System.out.println("YOU FINISHED THE LEVEL IN "+ moves + "MOVES!");
+		System.exit(0);
 	}
 
 	private void collect(Block b) {
