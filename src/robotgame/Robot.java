@@ -316,7 +316,6 @@ public class Robot extends Group {
 				return false;
 			}
 			
-			else if (b instanceof Exit){
 				end();
 			}
 			
