@@ -14,6 +14,7 @@ import blocks.Pit;
 import blocks.Wall;
 import blocks.Sliding;
 import blocks.SlidingX;
+import blocks.SlidingY;
 import blocks.Plate;
 import blocks.Pushable;
 import javafx.scene.Group;

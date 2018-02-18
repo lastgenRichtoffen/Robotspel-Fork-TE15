@@ -2,9 +2,11 @@ package robotgame;
 import java.util.ArrayList;
 
 import blocks.Block;
+import blocks.Coin;
 import blocks.Collectible;
 import blocks.Deadly;
 import blocks.Exit;
+import blocks.Gate;
 import blocks.Key;
 import blocks.Movable;
 import blocks.NotCollidable;
@@ -22,7 +24,7 @@ import javafx.scene.shape.Rectangle;
 public class Robot extends Group {
 	
 	private int moves=0;
-	private int keys=0;
+	public int keys=0;
 	private int coins=0;
 	private final double SQUARE_SIZE;
 	private AnimationTimer at;
@@ -378,7 +380,8 @@ public class Robot extends Group {
 
 	private void end() {
 		System.out.println("CONGLATURATION!");
-		System.out.println("You finished the level in "+ moves + " Moves!");
+		System.out.println("You finished the level in "+ moves + " Moves");
+		System.out.println(" and collected " + coins + " coins!");
 		System.exit(0);
 	}
 
@@ -387,14 +390,27 @@ public class Robot extends Group {
 		b = null;
 		if(b instanceof Key){
 			keys-=1;
-//			if(keys==0){
-//				g.setVisibility(false);							//need to find a way to target the gate of the level, can I do it in gate?
+			if(keys==0){
+							//need to find a way to target the gate of the level, can I do it in gate?
 			}
 		}
+		else if(b instanceof Coin){
+			coins+=1;
+		}
+	}
 	
+	/**
+	 * Lets the game know how many keys are in the level
+	 * @param ammount
+	 */
 	public void findkeys(int ammount){
 		keys=ammount;
 	}
+	
+	public void open(){
+//		Gate.open(true);
+	}
+	
 	
 	private void die(){
 		System.out.println("Game Over");
