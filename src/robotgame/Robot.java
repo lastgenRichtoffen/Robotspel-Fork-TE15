@@ -1,7 +1,13 @@
 package robotgame;
 import java.util.ArrayList;
-import blocks.*;
 
+import blocks.Block;
+import blocks.Collectible;
+import blocks.Deadly;
+import blocks.Exit;
+import blocks.Key;
+import blocks.Movable;
+import blocks.NotCollidable;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -16,7 +22,8 @@ import javafx.scene.shape.Rectangle;
 public class Robot extends Group {
 	
 	private int moves=0;
-//	private int keys=robotgame.MapInterpreter.keys;
+	private int keys=0;
+	private int coins=0;
 	private final double SQUARE_SIZE;
 	private AnimationTimer at;
 	private static int NUMBER_OF_ROBOTS = 0;
@@ -307,50 +314,60 @@ public class Robot extends Group {
 		boolean collision = collides(minX, minY, width, height);
 
 		if (collision) {
-			if (b instanceof Collectible) {
-				collect(b);
-				return false;
-			}
-			else if (b instanceof Deadly) {								//ends the game if robot interacts with deadly block
-				die();
-				return false;
-			}
+			System.out.println(keys);
 			
-				end();
-			}
+			if(this instanceof Robot){									//if the colliding thing is the robot
+
 			
-			else if (b instanceof Movable && moveObject == null) {
-				moveObject = b;
-				System.out.println("MOVEABLE");
-		
-				
-				this.setTranslateX(
-						Math.cos(Math.toRadians(270 + this.getRotate())) * SQUARE_SIZE + this.getTranslateX());	
-				this.setTranslateY(																				//these  block move
-						Math.sin(Math.toRadians(270 + this.getRotate())) * SQUARE_SIZE + this.getTranslateY());
-				
-//				if(b.intersects()){					//if the pushed block is pushed onto another block
-//					if()							//if the block it is pushed upon a plate
-//													//if the block is pushed into a hole
-//				}
-//				
-				if (checkCollision(this.getScene().getRoot())) {
-					moveObject = null;
-				} 
-				
-				this.setTranslateX(
-						-Math.cos(Math.toRadians(270 + this.getRotate())) * SQUARE_SIZE + this.getTranslateX());
-				this.setTranslateY(
-						-Math.sin(Math.toRadians(270 + this.getRotate())) * SQUARE_SIZE + this.getTranslateY());
-				if(moveObject == null){
-					return true;
+				if (b instanceof Collectible) {
+					collect(b);
+					return false;
+				}
+				else if (b instanceof Deadly) {								
+					die();
 				}
 				
-				return false;
+				else if (b instanceof Exit){
+					end();
+				}
 				
-				
-			}
+				else if (b instanceof Movable && moveObject == null) {
+					moveObject = b;
+					System.out.println("MOVEABLE");
+			
+					
+					this.setTranslateX(
+							Math.cos(Math.toRadians(270 + this.getRotate())) * SQUARE_SIZE + this.getTranslateX());	
+					this.setTranslateY(																				//these  block move
+							Math.sin(Math.toRadians(270 + this.getRotate())) * SQUARE_SIZE + this.getTranslateY());
+					
+	//				if(b.intersects()){					//if the pushed block is pushed onto another block
+	//					if()							//if the block it is pushed upon a plate
+	//													//if the block is pushed into a hole
+	//				}
+	//				
+					if (checkCollision(this.getScene().getRoot())) {
+						moveObject = null;
+					} 
+					
+					this.setTranslateX(
+							-Math.cos(Math.toRadians(270 + this.getRotate())) * SQUARE_SIZE + this.getTranslateX());
+					this.setTranslateY(
+							-Math.sin(Math.toRadians(270 + this.getRotate())) * SQUARE_SIZE + this.getTranslateY());
+					if(moveObject == null){
+						return true;
+					}
+					
+					return false;
+					
+					
+				}
 
+		}
+		
+		else if(this instanceof Movable){											//if the thing colliding is a pushable block
+			System.out.println("Ballo");
+		}
 			return true;
 
 		} 
@@ -360,20 +377,25 @@ public class Robot extends Group {
 	}
 
 	private void end() {
-		System.out.println("CONGGLATURATION!");
-		System.out.println("YOU FINISHED THE LEVEL IN "+ moves + "MOVES!");
+		System.out.println("CONGLATURATION!");
+		System.out.println("You finished the level in "+ moves + " Moves!");
 		System.exit(0);
 	}
 
 	private void collect(Block b) {
 		b.setVisible(false);
-//		keys-=1;
-//		if(keys==0){
-//			g.setVisibility(false);							//need to find a way to target the gate of the level, can I do it in gate?
+		b = null;
+		if(b instanceof Key){
+			keys-=1;
+//			if(keys==0){
+//				g.setVisibility(false);							//need to find a way to target the gate of the level, can I do it in gate?
+			}
 		}
-//		b = null;
-//	}
-
+	
+	public void findkeys(int ammount){
+		keys=ammount;
+	}
+	
 	private void die(){
 		System.out.println("Game Over");
 		System.exit(0);

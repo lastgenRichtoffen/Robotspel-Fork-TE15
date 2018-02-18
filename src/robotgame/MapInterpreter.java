@@ -137,9 +137,12 @@ public class MapInterpreter extends Group {
 			Robot r = new Robot(SQUARE_SIZE);
 			r.setTranslateX(robotCoords.get(i) * SQUARE_SIZE);
 			r.setTranslateY(robotCoords.get(i + 1) * SQUARE_SIZE);
+	
+			r.findkeys(keys);					//Tells robot how many keys there are in the level
+			
 			this.getChildren().add(r);
 		}
 
 	}
-
+	
 }
